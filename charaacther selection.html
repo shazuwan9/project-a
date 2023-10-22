@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 3D ROTATING IMAGE GALLERY</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div  class="title">
+        <h1>PAHLAWAN</h1>
+    </div>
+
+    
+   
+    <div class="box">
+      
+      <h1>Pilih Pahlawan Anda</h1>
+        
+        <button type="button" style="--i:1;" onclick="passValue('Character 1')">
+            <img src="IMAGES/demon dragon.png" alt="image not shown">
+        </button>
+        <button type="button" style="--i:2;" onclick="passValue('Character 2')">
+            <img src="IMAGES/dark paladin.png" alt="image not shown">
+        </button>
+        <button type="button" style="--i:3;" onclick="passValue('Character 3')">
+            <img src="IMAGES/ghost-idle.png" alt="image not shown">
+        </button>
+        <button type="button" style="--i:4;" onclick="passValue('Character 4')">
+            <img src="IMAGES/gothic-hero-idle.png" alt="image not shown">
+        </button>
+        <button type="button" style="--i:5;" onclick="passValue('Character 5')">
+            <img src="IMAGES/nightmare-galloping.png" alt="image not shown">
+        </button>
+        <button type="button" style="--i:6;" onclick="passValue('Character 6')">
+            <img src="IMAGES/Alice.png" alt="image not shown">
+        </button>
+
+        <button type="button" style="--i:7;" onclick="passValue('Character 7')">
+            <img src="IMAGES/GameofThore.png" alt="image not shown">
+        </button>
+
+        <button type="button" style="--i:8;" onclick="passValue('Character 8')">
+            <img src="IMAGES/odan.png" alt="image not shown">
+        </button>
+
+        <!-- <button type="button" style="--i:9;" onclick="passValue('Character 9')">
+            <img src="IMAGES/brucelee.png" alt="image not shown">
+        </button>
+
+        <button type="button" style="--i:10;" onclick="passValue('Character 10')">
+            <img src="IMAGES/ali.png" alt="image not shown">
+        </button>
+
+        <button type="button" style="--i:11;" onclick="passValue('Character 11')">
+            <img src="IMAGES/abu.png" alt="image not shown">
+        </button> -->
+        
+  
+    </div>
+    <div class="instrction">
+        <h1>-----Left Click And Move The Mouse Left or Right----</h5>
+    </div>
+   
+    <!--<button onclick="startGame()">Start Game</button>-->
+
+    <script type="text/javascript">
+        let selectedCharacters = [null, null];
+        let box = document.querySelector('.box');
+        let isMouseDown = false;
+        let ispress=false;
+        let buttons=document.querySelectorAll('.box button');
+        //var button=document.querySelectorAll('.button')
+
+        window.addEventListener('mousedown', function () {
+            isMouseDown = true;
+            ispress=true;
+        });
+
+        window.addEventListener('mouseup', function () {
+            isMouseDown = false;
+        });
+
+        window.addEventListener('mousemove', function (e) {
+            if (isMouseDown) {
+                let x = e.clientX;
+                box.style.transform = "perspective(1000px) rotateY(" + x + "deg)";
+            }
+        });
+
+        if(ispress){
+            buttons.classList.toggle('pressbutton');
+
+        }
+
+        function passValue(character) {
+            if (selectedCharacters[0] === null) {
+                selectedCharacters[0] = character;
+                buttons.forEach(button => {
+                    if (button.innerText === character) {
+                    button.classList.add('pressed');
+                    }
+                });
+            } else if (selectedCharacters[1] === null) {
+                selectedCharacters[1] = character;
+                buttons.forEach(button => {
+                if (button.innerText === character) {
+                    button.classList.add('pressed');
+            }
+             });
+    } else {
+        window.alert("You can only choose characters for two players.");
+    }
+            // Store the selected characters in sessionStorage
+            sessionStorage.setItem("player1Character", selectedCharacters[0]);
+            sessionStorage.setItem("player2Character", selectedCharacters[1]);
+
+              // Check if both players have selected characters
+            if (selectedCharacters[0] !== null && selectedCharacters[1] !== null) {
+                // Redirect to the next page
+                window.location.href = "secondPage.html";
+            } //else {
+            //     alert("Both players need to select characters.");
+            // }
+        }
+
+        // function startGame() {
+        //     // Check if both players have selected characters
+        //     if (selectedCharacters[0] !== null && selectedCharacters[1] !== null) {
+        //         // Redirect to the next page
+        //         window.location.href = "secondPage.html";
+        //     } else {
+        //         alert("Both players need to select characters.");
+        //     }
+        
+    </script>
+</body>
+</html>

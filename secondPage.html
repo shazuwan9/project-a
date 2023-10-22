@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="box">
+        <h1>Game Page</h1>
+        <p>Player 1 Character: <span id="player1Character"></span></p>
+        <p>Player 2 Character: <span id="player2Character"></span></p>
+    </div>
+
+    <script type="text/javascript">
+        // Get player characters from sessionStorage
+        var characters1 = sessionStorage.getItem("player1Character");
+        var character2 = sessionStorage.getItem("player2Character");
+
+        // Check if characters were stored in sessionStorage
+        if (characters1 === null && character2 === null) {
+            // Handle the case when characters are not available in sessionStorage
+            alert("Player characters not found in sessionStorage.");
+        } else {
+            // Get characters for Player 1 and Player 2
+            var player1 = characters1;
+            var player2 = character2;
+
+            // Update the HTML to display the player characters
+            let playerCharacter1 = document.getElementById("player1Character");
+            let playerCharacter2 = document.getElementById("player2Character");
+
+            playerCharacter1.textContent = player1;
+            playerCharacter2.textContent = player2;
+        }
+    </script>
+</body>
+</html>

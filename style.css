@@ -1,0 +1,121 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+body
+{
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+background:url('IMAGES/c.jpg');
+background-size:cover;  
+color: whitesmoke; 
+}
+.box {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+    transform: perspective(10px) rotate(0deg);
+    animation: animate 60s linear infinite;
+    margin-bottom: 20px; /* Add some spacing between the .box and .instruction */
+}
+
+.box h1 {
+    color: rgb(255, 255, 255);
+    position: absolute;
+    width: 160%;
+    margin-left:-50px;
+    margin-top: -110px;
+    text-align: center;
+    /*background-color: #ffff;*/
+}
+
+.instrction {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 20%;
+    color:white;
+    margin-top:45%;
+    margin-left:9%;
+    font-size: 20px;
+    text-align: center;
+  
+}
+
+/*
+@keyframes animate{
+    0%{
+        transform:perspective(1000px)rotateY(0deg);
+
+    }
+    100%{
+        transform:perspective(1000px)rotateY(360deg);
+    } 
+}
+*/
+.box button{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform:rotateY(calc(var(--i)*45deg))translateZ(400px);
+    -webkit-box-reflect:below 0px linear-gradient(transparent,transparent,#004);
+}
+.title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20%;
+    height: 20%;
+    color: #004;
+    margin-top: 5%;
+    margin-left: 37%;
+    font-size: 40px;
+    text-shadow: 0 0 3px rgb(90, 24, 246, 0.262); /* Add the glowing effect using text-shadow */
+    animation: title 1s infinite alternate; /* Create a pulsating glow animation */
+    text-align: center;
+  
+}
+@keyframes title {
+    0% {
+      text-shadow: 0 0 10px rgba(90, 24, 246, 0.262);
+    }
+    100% {
+      text-shadow: 0 0 20px rgb(91, 24, 246);
+    }
+  }
+
+.box button:hover{
+    opacity: 0.98;
+    width:120%;
+    height: 120%;
+
+}
+.box button.pressed {
+    border-color: rgb(255, 255, 255); /* Change the border color for pressed buttons */
+}
+
+/*.box button:active{
+    border-color: blueviolet;
+}*/
+
+.box button img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    background:transparent;
+    object-fit: cover;
+}
+
+
+  

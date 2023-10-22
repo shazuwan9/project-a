@@ -47,7 +47,7 @@ class Sprite {
 }
 
 class Fighter extends Sprite{
-    constructor({position, velocity, color = 'red', imageSRC, scale = 1, frameMax = 1, offset = {x:0, y:0}, sprites, attackBox = {offset: {}, width: undefined, height: undefined}}) {
+    constructor({position, velocity, imageSRC, scale = 1, frameMax = 1, offset = {x:0, y:0}, sprites, attackBox = {offset: {}, width: undefined, height: undefined}}) {
         super({
             position, 
             imageSRC, 
@@ -68,7 +68,6 @@ class Fighter extends Sprite{
             width: attackBox.width,
             height: attackBox.height
         }
-        this.color = color
         this.isAttacking
         this.health = 100
         this.frameCurrent = 0
@@ -187,5 +186,33 @@ class Fighter extends Sprite{
                 }
                 break
         }
+    }
+}
+
+class Skill extends Sprite {
+    constructor({position, velocity, imageSRC, scale = 1, frameMax = 1, offset = {x:0, y:0}}) {
+        super({
+            position, 
+            imageSRC, 
+            scale, 
+            frameMax,
+            offset
+        })
+        this.velocity = velocity
+        this.width = 50
+        this.height = 50
+        this.frameCurrent = 0
+        this.framesElapsed = 0
+        this.framesHold = 5
+        this.end = true
+    }
+
+    update() {
+        this.draw()
+        if(!this.end) {
+            this.animateFrames()
+        }
+        
+        this.position.x += this.velocity.x
     }
 }

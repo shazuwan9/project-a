@@ -1,9 +1,38 @@
+const gravity = 0.7
+
+const keys = {
+    //Player
+    a: {
+        pressed: false
+    },
+    d: {
+        pressed: false
+    },
+
+    //Enemy
+    ArrowLeft: {
+        pressed: false
+    },
+    ArrowRight: {
+        pressed: false
+    },
+}
+
 function rectangularCollision({rectangle1, rectangle2}) {
     return (
         rectangle1.attackBox.position.x + rectangle1.attackBox.width >= rectangle2.position.x && 
         rectangle1.attackBox.position.x <= rectangle2.position.x + rectangle2.width &&
         rectangle1.attackBox.position.y + rectangle1.attackBox.height >= rectangle2.position.y &&
         rectangle1.attackBox.position.y <= rectangle2.position.y + enemy.height
+    )
+}
+
+function skillCollision({skill, target}) {
+    return (
+        skill.position.x + skill.width >= target.position.x && 
+        skill.position.x <= target.position.x + target.width &&
+        skill.position.y + skill.height >= target.position.y &&
+        skill.position.y <= target.position.y + target.height
     )
 }
 
